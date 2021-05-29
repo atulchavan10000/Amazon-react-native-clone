@@ -24,6 +24,7 @@ const ProductItem = ({item} : ProductItemProps) => {
                 <View style={styles.ratingsContainer}>
                     { [0,0,0,0,0].map((el, index) => 
                         <FontAwesome 
+                            key={`${item.id}-${index}`}
                             style={styles.star} 
                             name={index < Math.floor(item.avgRating) ? 'star' : 'star-o'} 
                             /*ToDo: add logic for half star */

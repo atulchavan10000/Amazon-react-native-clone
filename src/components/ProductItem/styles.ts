@@ -13,8 +13,9 @@ const styles = StyleSheet.create({
     },
     image:{
         flex: 2,
-        height: 150,
-        resizeMode: 'contain'
+        height: 135,
+        resizeMode: 'contain',
+        margin: 5
     },
     rightContainer:{
         padding: 10,
