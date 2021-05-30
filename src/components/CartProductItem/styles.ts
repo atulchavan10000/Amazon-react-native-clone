@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'line-through'
     },
     quantityContainer: {
-        marginLeft: 24,
+        marginLeft: 6,
         marginVertical: 5
     }
 
