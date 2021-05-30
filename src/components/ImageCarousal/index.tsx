@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react';
 import { View, Text, FlatList, StyleSheet, Image, useWindowDimensions } from 'react-native';
 
 
-const ImageCarousal = ({images} : {images: [string]}) => {
+const ImageCarousal = ({images} : {images: string[]}) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const windowWidth = useWindowDimensions().width;
 
