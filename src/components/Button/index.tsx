@@ -3,10 +3,11 @@ import { View, Text, Pressable, StyleSheet } from 'react-native'
 interface ButtonProps{
     text: string,
     onPress: () => void;
+    containerStyles?: object;
 }
-const Button = ({text, onPress, } : ButtonProps) => {
+const Button = ({text, onPress, containerStyles } : ButtonProps) => {
     return (
-        <Pressable style={styles.root} onPress={onPress}>
+        <Pressable style={[styles.root, containerStyles]} onPress={onPress}>
             <Text style={styles.text}>{text}</Text>
         </Pressable>
     );
