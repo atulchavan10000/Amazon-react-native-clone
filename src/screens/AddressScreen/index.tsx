@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Alert } from 'react-native';
+import { View, Text, TextInput, Alert, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import styles from './styles';
 import countryList from 'country-list';
@@ -13,8 +13,7 @@ const AddressScreen = () => {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [addressError, setAddressError] = useState('Invalid');
-
-
+    
     const onCheckout =()=>{
         if(!!addressError){
             Alert.alert('Fix all field errors, before submiting');
@@ -41,7 +40,11 @@ const AddressScreen = () => {
         }
     }
     return (
-        <View style={styles.root}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={Platform.OS == 'ios' ? 0: 10}
+            >
+            <ScrollView style={styles.root}>
             <View style={styles.row}>
                 <Picker selectedValue={country} onValueChange={setCountry}>
                     {countries.map(country => (
@@ -49,6 +52,7 @@ const AddressScreen = () => {
                     ))}
                 </Picker>
             </View>
+           
             <View style={styles.row}>
                 <Text style={styles.label}>Full name (First and Last name)</Text>
                 <TextInput 
@@ -58,6 +62,7 @@ const AddressScreen = () => {
                     onChangeText={setFullname}
                 />
             </View>
+        
             <View style={styles.row}>
                 <Text style={styles.label}>Phone number</Text>
                 <TextInput 
@@ -96,7 +101,9 @@ const AddressScreen = () => {
                 />     
             </View>
             <Button text="Checkout" onPress={onCheckout}/>
-        </View>
+        </ScrollView>
+        </KeyboardAvoidingView>
+        
     );
 };
 
