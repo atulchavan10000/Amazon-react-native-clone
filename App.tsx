@@ -9,24 +9,26 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StatusBar, useColorScheme,} from 'react-native';
+import { View, StatusBar, useColorScheme,} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import AddressScreen from './src/screens/AddressScreen';
+import 'react-native-gesture-handler';
 
-import HomeScreen from './src/screens/HomeScreen';
-
+import Router from './src/router';
  const App = () => {
    const isDarkMode = useColorScheme() === 'dark';
 
    const backgroundStyle = {
      backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+     flex: 1
    };
 
    return (
-     <SafeAreaView style={backgroundStyle}>
+     <View style={backgroundStyle}>
        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-       <HomeScreen />
-     </SafeAreaView>
+       <Router />
+     </View>
    );
  };
 
- export default App;
+export default App;
